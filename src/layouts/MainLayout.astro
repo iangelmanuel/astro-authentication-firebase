@@ -1,0 +1,43 @@
+---
+import Navbar from "@/components/shared/Navbar.astro"
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const siteInfo = {
+  title: "Astro",
+  description: "Build faster websites with less client-side Javascript."
+}
+
+const { title = siteInfo.title, description = siteInfo.description } =
+  Astro.props
+---
+
+<html lang="en">
+  <head>
+    <title>{title}</title>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content={description}
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+  </head>
+  <body>
+    <Navbar />
+
+    <main class="container m-auto max-w-3xl px-5">
+      <slot />
+    </main>
+  </body>
+</html>
